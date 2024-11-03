@@ -89,6 +89,30 @@ img {
   background-color: #fff;
   max-width: 700px;
   margin: 0 auto 50px;
+  padding: 10px 20px;
+
+  display: flex;
+  align-items: center;
+}
+
+.icon-container {
+  /* border: 2px solid black; */
+  width: 100px;
+  height: 100%;
+  margin-right: 15px;
+}
+
+.icon-container img {
+  object-fit: cover;
+}
+
+.icon-info p {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.icon-info p span {
+  font-weight: 600;
 }
 
 form {
@@ -106,11 +130,12 @@ form .form-control {
   background-color: rgb(126, 206, 250);
   display: flex;
   border-radius: 10px;
+  padding-left: 20px;
 }
 
 form .form-control i {
   align-self: center;
-  padding: 10px 20px;
+  margin-right: 10px;
 }
 
 form .form-control input {
@@ -119,9 +144,7 @@ form .form-control input {
   border: none;
   font-size: 1.6rem;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
-  background-color: rgb(126, 206, 250);
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  background-color: transparent;
 }
 
 form .form-control input::placeholder {
