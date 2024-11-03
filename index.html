@@ -16,15 +16,48 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <!----- Header ----->
     <header class="header">
       <div class="container">
-        <a href="" class="logo"
-          ><i class="fa-solid fa-people-arrows"></i> Icon Idol</a
-        >
+        <div class="logo">
+          <i class="fa-solid fa-people-arrows"></i> Icon Idol
+        </div>
       </div>
     </header>
 
-    <section></section>
+    <!----- Icon Section ----->
+    <section class="icon-section">
+      <div class="container">
+        <h2 class="call-to-action">Get an icon for any site</h2>
+        <p class="description">
+          Type in the domain name for any website (for example signal.org), and
+          Idol Icon will fetch the best available favicon for you.
+        </p>
+
+        <div class="icon-info">
+          <div class="icon-conatiner">
+            <img src="" alt="" class="icon" id="icon" />
+          </div>
+
+          <p>Icon for: <span id="website"></span></p>
+        </div>
+
+        <form id="form">
+          <p>Website address</p>
+
+          <div class="form-control">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+              type="text"
+              name="website-domain"
+              id="website-domain"
+              placeholder="ex. youtube.com"
+            />
+            <button type="submit">Search</button>
+          </div>
+        </form>
+      </div>
+    </section>
 
     <script src="./main.js"></script>
   </body>

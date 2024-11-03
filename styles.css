@@ -60,6 +60,86 @@ img {
   justify-content: center;
 }
 
+/* ----- Icon Section Styles -----*/
+.icon-section {
+  padding: 0 20px 90px;
+}
+
+.icon-section .container {
+  background-color: rgb(246, 247, 248);
+  padding: 70px 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.icon-section .call-to-action {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.icon-section .description {
+  font-size: 1.8rem;
+  max-width: 900px;
+  margin: 0 auto 90px;
+}
+
+.icon-section .icon-info {
+  background-color: #fff;
+  max-width: 700px;
+  margin: 0 auto 50px;
+}
+
+form {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form p {
+  margin-bottom: 10px;
+}
+
+form .form-control {
+  height: 55px;
+  background-color: rgb(126, 206, 250);
+  display: flex;
+  border-radius: 10px;
+}
+
+form .form-control i {
+  align-self: center;
+  padding: 10px 20px;
+}
+
+form .form-control input {
+  flex: 1;
+  outline: none;
+  border: none;
+  font-size: 1.6rem;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  background-color: rgb(126, 206, 250);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+form .form-control input::placeholder {
+  font-size: 1.6rem;
+  color: #000;
+}
+
+form .form-control button {
+  background-color: rgb(94, 194, 105);
+  padding: 10px 40px;
+  border: none;
+  color: #fff;
+  font-size: 1.8rem;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+}
+
 /* ----- Utility Classes ----- */
 .container {
   max-width: 1200px;
