@@ -184,3 +184,34 @@ form .form-control button {
   margin: 0 auto;
   padding: 0 15px;
 }
+
+/* Media Queries */
+@media screen and (max-width: 500px) {
+  .header .logo {
+    font-size: 2rem;
+  }
+
+  .icon-section .call-to-action {
+    font-size: 2.5rem;
+  }
+
+  .icon-section .description,
+  .icon-action p,
+  .icon-action .download-btn {
+    font-size: 1.6rem;
+  }
+
+  .icon-container {
+    width: 50px;
+  }
+
+  form .form-control button {
+    padding: 10px 20px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .icon-section {
+    padding: 0 0 90px;
+  }
+}
