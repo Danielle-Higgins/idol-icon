@@ -191,6 +191,10 @@ form .form-control button {
     font-size: 2rem;
   }
 
+  .icon-section {
+    padding: 0 0 90px;
+  }
+
   .icon-section .call-to-action {
     font-size: 2.5rem;
   }
@@ -207,11 +211,5 @@ form .form-control button {
 
   form .form-control button {
     padding: 10px 20px;
-  }
-}
-
-@media screen and (max-width: 380px) {
-  .icon-section {
-    padding: 0 0 90px;
   }
 }
