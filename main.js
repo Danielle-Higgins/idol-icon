@@ -39,8 +39,34 @@ function displayIcon(data) {
 
   domainName.textContent = websiteInput.value;
 
-  iconLink.href = data.url;
+  iconLink.href = iconImage.src;
 
   // reset values
   websiteInput.value = "";
 }
+
+function downloadFile() {
+  const downloadIcon = document.getElementById("download");
+  const iconImage = document.getElementById("icon");
+
+  downloadIcon.addEventListener("click", () => {
+    // fetch the file
+    fetch(iconImage.src)
+      .then((response) => response.blob()) // handle binary data
+      .then((blob) => {
+        // console.log(blob);
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.style.display = "none";
+        a.href = url;
+        a.download = "Icon";
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      })
+      .catch((error) => console.log(`${error}`));
+  });
+}
+
+downloadFile();
