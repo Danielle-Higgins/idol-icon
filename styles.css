@@ -210,7 +210,7 @@ form .form-control button {
   }
 }
 
-@media screen and (max-width: 370px) {
+@media screen and (max-width: 380px) {
   .icon-section {
     padding: 0 0 90px;
   }
