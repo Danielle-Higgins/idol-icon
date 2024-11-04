@@ -195,6 +195,10 @@ form .form-control button {
     padding: 0 0 90px;
   }
 
+  form {
+    max-width: 100%;
+  }
+
   .icon-section .call-to-action {
     font-size: 2.5rem;
   }
