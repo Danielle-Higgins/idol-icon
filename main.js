@@ -1,82 +1,99 @@
 const BASEURL = "https://icon.horse/icon";
 
-const form = document.getElementById("form");
-const websiteInput = document.getElementById("website-domain");
+class IconSearcher {
+  constructor(form, input, icon, website, iconLink, download) {
+    this.form = document.getElementById(form);
+    this.websiteInput = document.getElementById(input);
+    this.iconImage = document.getElementById(icon);
+    this.domainName = document.getElementById(website);
+    this.iconLink = document.getElementById(iconLink);
+    this.downloadIcon = document.getElementById(download);
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+    this.setupEventListners();
+  }
 
-  // get input value
-  const websiteVal = websiteInput.value.trim();
+  setupEventListners() {
+    this.form.addEventListener("submit", (e) => this.handleSubmit(e));
+    this.downloadIcon.addEventListener("click", () => this.downloadFile());
+  }
 
-  // if input value is empty
-  if (!websiteVal) alert("Type in a domain name");
-  else searchIcon(websiteVal);
-});
+  // handles form sumbit
+  handleSubmit(e) {
+    e.preventDefault();
 
-// search for the icon based on domain name
-function searchIcon(domain) {
-  const url = `${BASEURL}/${domain}`;
+    // get input value
+    const websiteVal = this.websiteInput.value.trim();
 
-  fetch(url)
-    .then((data) => {
-      console.log(data);
+    // if input value is empty
+    if (!websiteVal) return;
+    else this.searchIcon(websiteVal);
+  }
 
-      // Access the URL directly from the response
-      // console.log(data.url);
+  // search for the icon based on domain name
+  async searchIcon(domainName) {
+    const url = `${BASEURL}/${domainName}`;
 
-      if (!data.ok) throw new Error("Network response was not okay");
+    try {
+      const response = await fetch(url);
 
-      displayIcon(data);
-    })
-    .catch((error) => console.log(`${error}`));
-}
+      if (!response.ok) throw new Error("Network response was not ok!");
 
-// display the icon
-function displayIcon(data) {
-  const iconImage = document.getElementById("icon");
-  const domainName = document.getElementById("website");
-  const iconLink = document.getElementById("icon-link");
+      // console.log(response);
+      // console.log(response.url);
 
-  // set the source to the url
-  iconImage.src = data.url;
-  iconImage.alt = `icon for ${websiteInput.value}`;
+      this.displayIcon(response.url);
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  }
 
-  domainName.textContent = websiteInput.value;
+  // display the icon
+  displayIcon(data) {
+    // set the source to the url
+    this.iconImage.src = data;
+    this.iconImage.alt = `Icon for ${this.websiteInput.value}`;
 
-  // can click on icon for preview
-  iconLink.href = iconImage.src;
+    this.domainName.textContent = this.websiteInput.value;
 
-  // reset values
-  websiteInput.value = "";
-}
+    // can click on icon for preview
+    this.iconLink.href = this.iconImage.src;
 
-// download icon to device
-function downloadFile() {
-  const downloadIcon = document.getElementById("download");
-  const iconImage = document.getElementById("icon");
+    // reset values
+    this.websiteInput.value = "";
+  }
 
-  downloadIcon.addEventListener("click", () => {
+  // download icon to device
+  async downloadFile() {
     // fetch the file
-    fetch(iconImage.src)
-      .then((response) => response.blob()) // handle binary data
-      .then((blob) => {
-        // console.log(blob);
-        const url = window.URL.createObjectURL(blob);
+    try {
+      const response = await fetch(this.iconImage.src);
 
-        const a = document.createElement("a");
-        a.style.display = "none";
-        a.href = url;
-        a.download = "Icon";
+      if (!response.ok) throw new Error("Network response was not ok!");
 
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
-      })
-      .catch((error) => console.log(`${error}`));
-  });
+      // handle binary data
+      const data = await response.blob();
+      const url = window.URL.createObjectURL(data);
+
+      const a = document.createElement("a");
+      a.style.display = "none";
+      a.href = url;
+      a.download = "Icon";
+
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  }
 }
 
-// call function
-downloadFile();
+const icon = new IconSearcher(
+  "form",
+  "website-domain",
+  "icon",
+  "website",
+  "icon-link",
+  "download"
+);
